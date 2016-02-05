@@ -11,10 +11,11 @@ final class Response
         http_response_code($code);
     }
 
-    public function sendNotFoundHeader()
+    public function sendNotFoundHeader($url)
     {
         session_write_close();
         header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+        include (NOT_FOUND_404);
         exit;
     }
 }
