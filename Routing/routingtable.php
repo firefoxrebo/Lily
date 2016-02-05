@@ -70,7 +70,7 @@ class RoutingTable
             $parameters = array();
             $routerFetchedParameters = $router->getParams();
             foreach ($this->_routingTable[$routeID]['_params_'] as $parameter) {
-                $parameters[$parameter] = $routerFetchedParameters[$index];
+                $parameters[$parameter] = $routerFetchedParameters[$index++];
             }
             $router->setParams($parameters);
         }
