@@ -11,25 +11,62 @@ use Lily\Registry;
 class FrontController 
 {
 
+    /**
+     * @var string The fully qualified controller name
+     */
     private $_controller;
+
+    /**
+     * @var string The action method name to call
+     */
     private $_action;
+
+    /**
+     * @var array The request parameters array
+     */
     private $_params = array();
+
+    /**
+     * @var Registry\Registry The registry object
+     */
     private $_registry;
+
+    /**
+     * @var Template\Template the template engine object
+     */
     private $_template;
+
+    /**
+     * @var Request the http request object
+     */
     private $_request;
+
+    /**
+     * @var Response the http response object
+     */
     private $_response;
-    
-    public function __construct(Routing\Router $router, Registry\Registry $registry, Template\Template $template, Request $request, Response $response)
+
+    /**
+     * FrontController constructor.
+     * @param Routing\Router $router
+     * @param Registry\Registry $registry
+     * @param Template\Template $template
+     */
+    public function __construct(Routing\Router $router, Registry\Registry $registry, Template\Template $template)
     {
         $this->_controller = $router->getController();
         $this->_action = $router->getAction();
         $this->_params = $router->getParams();
-        $this->_request = $request;
-        $this->_response = $response;
         $this->_registry = $registry;
+        $this->_request = $registry->request;
+        $this->_response = $registry->response;
         $this->_template = $template;
     }
 
+    /**
+     * Creating the appropriate Controller object and
+     * invokes the required action method
+     */
     public function dispatch()
     {
         $className = $this->_controller . 'controller';
