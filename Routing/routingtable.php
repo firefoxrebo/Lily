@@ -56,9 +56,8 @@ class RoutingTable
     public function has(Router $router)
     {
         $found = false;
-        // TODO: check the regex patterns against the urls manually
         foreach ($this->_routingTable as $routeID => $routeDetails) {
-            if (preg_match("/" . str_replace('/', '\/', $routeDetails['_url_']) . "/i", $router->getFinalRequestedId())) {
+            if (preg_match("/^" . str_replace('/', '\/', $routeDetails['_url_']) . "$/i", $router->getFinalRequestedId())) {
                 $found = true;
                 break;
             }
