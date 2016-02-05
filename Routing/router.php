@@ -63,6 +63,15 @@ class Router
     }
 
     /**
+     * Returns the HTTP Request Object
+     * @return Request
+     */
+    public function getRequest()
+    {
+        return $this->_request;
+    }
+
+    /**
      * Sets the Response Object
      * @param Response $response
      * @return $this
@@ -71,6 +80,15 @@ class Router
     {
         $this->_response = $response;
         return $this;
+    }
+
+    /**
+     * Returns the HTTP Response Object
+     * @return Response
+     */
+    public function getResponse()
+    {
+        return $this->_response;
     }
 
     /**
