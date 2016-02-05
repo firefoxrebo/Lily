@@ -58,7 +58,8 @@ class RoutingTable
     {
         $found = false;
         foreach ($this->_routingTable as $routeID => $routeDetails) {
-            if (preg_match("/^" . str_replace('/', '\/', $routeDetails['_url_']) . "$/i", $router->getFinalRequestedId())) {
+            if (preg_match("/^" . str_replace('/', '\/', $routeDetails['_url_']) . "$/i", $router->getFinalRequestedId()) &&
+                in_array($router->getRequest()->getMethod(), $this->_routingTable[$routeID]['_method_'])) {
                 $found = true;
                 break;
             }
