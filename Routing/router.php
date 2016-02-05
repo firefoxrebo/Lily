@@ -158,6 +158,8 @@ class Router
             $url = ltrim($url, '/');
         }
 
+        $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+
         @list($controller, $action, $params) = explode('/', $url, 3);
 
         if(isset($controller) && !empty($controller)) {
