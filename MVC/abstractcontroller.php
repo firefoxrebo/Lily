@@ -137,14 +137,6 @@ abstract class AbstractController
     {
         return $this->_params;
     }
-    
-    protected function injectCKEditor()
-    {
-        $this->_template->injectHeaderResource('ckeditor', 'js', 
-                JS . 'vendor/ckeditor/ckeditor.js', 'modernizr');
-        $this->_template->injectHeaderResource('ckfinder', 'js', 
-                JS . 'vendor/ckeditor/ckfinder.js', 'ckeditor');
-    }
 
     /**
      * Renders the appropriate view
@@ -158,27 +150,6 @@ abstract class AbstractController
     {
         $viewFile = VIEWS_PATH . DS . $this->_controller . DS . $this->_action .
                  '.view.php';
-        if(isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
-            if (!preg_match('/chrome/i', $_SERVER['HTTP_USER_AGENT'])
-            && !preg_match('/iPad/i', $_SERVER['HTTP_USER_AGENT']) 
-            && !preg_match('/iPhone/i', $_SERVER['HTTP_USER_AGENT'])) {
-                $viewFile = VIEWS_PATH . DS . 'browser' . DS . 'usechrome.view.php';
-            }
-        }
-        $this->_template->setData($this->_data);
-        $this->_template->setLang($this->lang->getDictionary());
-        $this->_template->setView($viewFile);
-        $this->_template->setRegistry($this->_registry);
-        $this->_template->drawTemplate();
-    }
-
-    /**
-     * Used to render the not found view
-     * in case of a non existed view
-     */
-    public function notfound ()
-    {
-        $viewFile = VIEWS_PATH . DS . 'notfound' . DS . 'default.view.php';
         $this->_template->setData($this->_data);
         $this->_template->setLang($this->lang->getDictionary());
         $this->_template->setView($viewFile);
