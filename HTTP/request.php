@@ -108,4 +108,9 @@ final class Request
         return parse_url($this->getServerValue('REQUEST_URI'), PHP_URL_PATH);
     }
 
+    public function getMethod()
+    {
+        return $this->_SERVERData->REQUEST_METHOD;
+    }
+
 }
