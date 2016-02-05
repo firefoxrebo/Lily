@@ -46,6 +46,7 @@ class RoutingTable
         }
 
         $this->_routingTable[$routeID]['_url_'] = $url;
+        $this->_routingTable[$routeID]['_method_'] = explode(',', $routeDefinition['_method_']);
     }
 
     /**
