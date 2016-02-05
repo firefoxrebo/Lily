@@ -196,7 +196,7 @@ class Router
         if(true !== $this->_routeCollection->has($this))
         {
             $this->_response->setStatusCode(404);
-            $this->_response->sendNotFoundHeader();
+            $this->_response->sendNotFoundHeader($this->_request->getPath());
         }
     }
 }
