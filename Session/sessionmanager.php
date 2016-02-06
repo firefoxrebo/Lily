@@ -66,6 +66,15 @@ class SessionManager extends \SessionHandler
     public function __construct()
     {
 
+        // Check if the session save path is a custom save path and is writable
+        if(SESSION_SAVE_PATH !== ini_get('session.save_path')) {
+            if(!is_dir(SESSION_SAVE_PATH) || !is_writable(SESSION_SAVE_PATH)) {
+                exit('Either the session save path is not a
+                    directory or not writable. Please check the SESSION_SAVE_PATH in the
+                    session configuration file.');
+            }
+        }
+
         $this->sessionSSL = isset($_SERVER['HTTPS']) ? true : false;
         $this->sessionDomain = str_replace('www.', '', $_SERVER['SERVER_NAME']);
 
