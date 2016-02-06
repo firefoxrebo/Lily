@@ -68,10 +68,11 @@ class SessionManager extends \SessionHandler
 
         // Check if the session save path is a custom save path and is writable
         if(SESSION_SAVE_PATH !== ini_get('session.save_path')) {
-            if(!is_dir(SESSION_SAVE_PATH) || !is_writable(SESSION_SAVE_PATH)) {
-                exit('Either the session save path is not a
-                    directory or not writable. Please check the SESSION_SAVE_PATH in the
-                    session configuration file.');
+            if(!is_dir(SESSION_SAVE_PATH)) {
+                exit('The session file storage folder doesn\'t exists.');
+            }
+            if(!is_writable(SESSION_SAVE_PATH)) {
+                exit('The session file storage folder is not writable.');
             }
         }
 
