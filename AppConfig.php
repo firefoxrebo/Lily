@@ -74,6 +74,15 @@ class AppConfig
     }
 
     /**
+     * Loads the session configuration file
+     * @return mixed
+     */
+    public function loadSessionConfig()
+    {
+        return require_once CONFIG_FOLDER . DS . 'session.php';
+    }
+
+    /**
      * Check the PHP Environment for the minimum requirements
      * for the application to run
      */
