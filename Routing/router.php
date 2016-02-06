@@ -4,7 +4,7 @@ namespace Lily\Routing;
 use Lily\HTTP\Request;
 use Lily\HTTP\Response;
 
-class Router
+class Router implements RouterInterface
 {
     /**
      * Default Controller Name if none is specified in the URI
@@ -168,7 +168,7 @@ class Router
      * Parses the url to extract controller name, action name and request parameters
      * @param $url The requested url
      */
-    private function parseRoute($url)
+    public function parseRoute($url)
     {
         // Check if the project is on the domain root or a sub folder
         if(APP_READS_FROM === 'subfolder') {
