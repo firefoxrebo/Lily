@@ -64,6 +64,7 @@ $template = new Template($templateBlocks);
  */
 $appConfig->loadSessionConfig();
 $session = new SessionManager;
+$session->start();
 
 /**
  * Instantiate the Registry Object
@@ -79,6 +80,11 @@ $registry->request = $request;
  * Add the HTTP Response Object to the app registry
  */
 $registry->response = $response;
+
+/**
+ * Add the Session Object to the app registry
+ */
+$registry->session = $session;
 
 /**
  * Instantiate the FrontController Object
