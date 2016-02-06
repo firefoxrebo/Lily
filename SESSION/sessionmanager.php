@@ -1,5 +1,5 @@
 <?php
-namespace Lily\Core;
+namespace Lily\Session;
 
 class SessionManager extends \SessionHandler
 {
