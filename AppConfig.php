@@ -1,8 +1,6 @@
 <?php
 namespace Lily;
 
-use Lily\Template\TemplateBlocks;
-
 define('CONFIG_FOLDER', APP_PATH . DS . 'config');
 
 class AppConfig
