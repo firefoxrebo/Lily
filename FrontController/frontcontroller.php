@@ -48,11 +48,11 @@ class FrontController
 
     /**
      * FrontController constructor.
-     * @param Routing\Router $router
+     * @param Routing\RouterInterface $router
      * @param Registry\Registry $registry
      * @param Template\Template $template
      */
-    public function __construct(Routing\Router $router, Registry\Registry $registry, Template\Template $template)
+    public function __construct(Routing\RouterInterface $router, Registry\Registry $registry, Template\Template $template)
     {
         $this->_controller = $router->getController();
         $this->_action = $router->getAction();
