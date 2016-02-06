@@ -60,6 +60,12 @@ $templateBlocks = $appConfig->loadTemplateConfig();
 $template = new Template($templateBlocks);
 
 /**
+ * Instantiate the session handler
+ */
+$appConfig->loadSessionConfig();
+$session = new SessionManager;
+
+/**
  * Instantiate the Registry Object
  */
 $registry = Registry::getInstance();
