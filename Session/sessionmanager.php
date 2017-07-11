@@ -163,15 +163,18 @@ class SessionManager extends \SessionHandler
     /**
      * Starts or resuming a session
      */
-    public function start()
-    {
-        if('' === session_id()) {
-            if(session_start()) {
-                $this->setSessionStartTime();
-                $this->checkSessionValidity();
-            }
-        }
-    }
+     public function start()
+     {
+         if('' === session_id()) {
+             if(session_start()) {
+                 $this->setSessionStartTime();
+                 $this->checkSessionValidity();
+                 return true;
+             } else {
+                 return false;
+             }
+         }
+     }
 
     /**
      * Sets the session start time to compare against the TTL property
